@@ -1,11 +1,12 @@
 import { useNavigate, useParams} from "react-router-dom"
+import "./nav.css"
 
 export const NavBar = () => {
   const { sessionId } = useParams()
   const navigate = useNavigate()
-  
+
   const handleNavigate = (to: string) => {
-    if(`/${sessionId}` === to) {
+    if(`/home/${sessionId}` === to) {
       return window.location.href = to
     }
 
@@ -14,10 +15,11 @@ export const NavBar = () => {
 
   return (
     <nav>
-      <a onClick={() => handleNavigate('/session-sobre')}>Sobre</a>
-      <a onClick={() => handleNavigate('/session-projetos')}>Projetos</a>
+      <a onClick={() => handleNavigate('/home/session-sobre')}>Sobre</a>
+      <a onClick={() => handleNavigate('/home/session-projetos')}>Projetos</a>
       <a onClick={() => handleNavigate('/join')}>Entre para o time</a>
-      <a onClick={() => handleNavigate('/session-suporte')}>Suporte</a>
+      <a onClick={() => handleNavigate('/home/session-suporte')}>Suporte</a>
+      <a onClick={() => handleNavigate('/')}>Main</a>
     </nav>
   )
 }
